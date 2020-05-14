@@ -1,10 +1,10 @@
 #include "monty.h"
 
-void containerBuffer(stack_t *head, int line)
+void pint(stack_t *head, int line)
 {
 	if (head == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%s: can't pint, stack empty\n", line);
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
 	while (head != NULL)

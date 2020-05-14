@@ -27,5 +27,7 @@ void containerBuffer(stack_t **head, char *value, int line)
 		push(head, value, line);
 	else if(_strcmp(token, "pall") == 0) 
 		pall(*head);
+	else if(_strcmp(token, "pint") == 0)
+		pint(*head, line);
 	free(temp);
 }
