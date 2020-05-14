@@ -1,15 +1,15 @@
 #include "monty.h"
 
-void pint(stack_t *head, int line)
+void pint(stack_t **stack, unsigned int line_number)
 {
-	if (head == NULL)
+	if ((*(stack)) == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line);
+		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	while (head != NULL)
+	while (stack != NULL)
 	{
-		head = head->next;
+		(*(stack)) = (*(stack))->next;
 	}
-	printf("%d\n", head->n);
+	printf("%d\n", (*(stack))->n);
 }

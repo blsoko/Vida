@@ -1,5 +1,5 @@
 #include "monty.h"
-
+char *containerFile;
 int _strcmp(char *s1, char *s2)
 {
 	int i, rtn = 0;
@@ -15,19 +15,25 @@ int _strcmp(char *s1, char *s2)
 	return (rtn);
 }
 
-void containerBuffer(stack_t **head, char *value, int line)
+void containerBuffer(stack_t **head, unsigned int line)
 {
-	char *token = strdup(value), limit[] = " \t\n";
+	char *token = strdup(containerFile), limit[] = " \t\n";
 	char *temp = token;
+	int j = 0;
 	
+	instruction_t seg[] = {{"push", push}, {"pall", pall},
+	{"pint", pint}, {'\0', NULL}};
 	token = strtok(temp, limit);
 	if (token[0] != '\0' && token[0] == '#')
 		return;
-	if(_strcmp(token, "push") == 0)
-		push(head, value, line);
-	else if(_strcmp(token, "pall") == 0) 
-		pall(*head);
-	else if(_strcmp(token, "pint") == 0)
-		pint(*head, line);
+	while (seg[j].opcode != '\0') /*structrure elements iterator*/
+	{
+		if (_strcmp(token, seg[j].opcode) == 0)
+		{
+			(seg[j].f)(head, line);
+			break;
+		}
+		j++;
+	}
 	free(temp);
 }

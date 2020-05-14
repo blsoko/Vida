@@ -1,5 +1,6 @@
 #include "monty.h"
 
+char *containerFile;
 void free_h(stack_t *head)
 {
 	stack_t *vector;
@@ -16,8 +17,7 @@ void free_h(stack_t *head)
 int main(int ac, char *av[])
 {
 	FILE *openFile;
-	char *containerFile;
-	int line = 0;
+	unsigned int line = 0;
 	size_t containerSize = 320;
 	stack_t *head;
 
@@ -39,7 +39,7 @@ int main(int ac, char *av[])
 	while (getline(&containerFile, &containerSize, openFile) != -1)
 	{
 		line++;
-		containerBuffer(&head, containerFile, line);
+		containerBuffer(&head, line);
 	}
 	free(containerFile);
 	free_h(head);
