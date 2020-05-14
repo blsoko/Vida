@@ -1,17 +1,17 @@
 #include "monty.h"
 
 char *containerFile;
-void free_h(stack_t *head)
+void free_h(stack_t **head)
 {
 	stack_t *vector;
 
-	while (head != NULL)
+	while ((*(head)) != NULL)
 	{
-		vector = head;
-		head = head->next;
+		vector = (*(head));
+		(*(head)) = (*(head))->next;
 		free(vector);
 	}
-	free(head);
+	free((*(head)));
 }
 
 int main(int ac, char *av[])
@@ -42,7 +42,7 @@ int main(int ac, char *av[])
 		containerBuffer(&head, line);
 	}
 	free(containerFile);
-	free_h(head);
+	free_h(&head);
 	fclose(openFile);
 	return (0);
 }

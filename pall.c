@@ -2,10 +2,14 @@
 
 void pall(stack_t **stack, unsigned int line_number)
 {
+	stack_t **vector;
+
+	vector = stack;
 	(void)line_number;
-	while ((*(stack)) != NULL)
-	{
-		printf("%d\n", (*(stack))->n);
-		(*(stack)) = (*(stack))->next;
+	while ((*(vector)) != NULL)
+	{	
+		printf("%d\n", (*(vector))->n);
+		(*(vector)) = (*(vector))->next;
 	}
+	free_h(vector);
 }

@@ -40,6 +40,7 @@ void containerBuffer(stack_t **head, unsigned int line);
 int _strcmp(char *s1, char *s2);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-void free_h(stack_t *head);
+void free_h(stack_t **head);
 void pint(stack_t **stack, unsigned int line_number);
+void freeFile(stack_t *now);
 #endif /* MONTY */

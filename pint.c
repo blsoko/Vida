@@ -7,9 +7,10 @@ void pint(stack_t **stack, unsigned int line_number)
 		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	while (stack != NULL)
+	while ((*(stack)) != NULL)
 	{
-		(*(stack)) = (*(stack))->next;
+		printf("%d\n", (*(stack))->n);
+		(*(stack)) = (*(stack))->prev;
 	}
-	printf("%d\n", (*(stack))->n);
+	
 }
