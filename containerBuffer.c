@@ -40,7 +40,7 @@ void containerBuffer(stack_t **head, unsigned int line)
 	}
 	if(flag == 0)
 	{
-		dprintf(STDERR_FILENO, "L%u: unknown instruction <opcode>\n", line);
+		fprintf(stderr, "L%u: unknown instruction <opcode>\n", line);
 		exit(EXIT_FAILURE);
 	}
 	free(temp);

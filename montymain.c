@@ -26,13 +26,13 @@ int main(int ac, char *av[])
 		exit(EXIT_FAILURE);
 	if (ac != 2)
 	{
-		dprintf(2, "USAGE: monty file\n");
-		exit(1);
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
 	}
 	openFile = fopen(av[1], "r");
 	if (openFile == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", av[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 	head = NULL;

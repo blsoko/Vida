@@ -15,14 +15,14 @@ void freeFile(stack_t *head)
 }
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_node;
 	char *token, limit[] = " \t\n";
 	int number, j = 0;
+	stack_t *new_node;
 	
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(containerFile, limit);
@@ -31,14 +31,14 @@ void push(stack_t **stack, unsigned int line_number)
 	token = strtok(NULL, limit);
 	if (token == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	while(token[j] != '\0')
 	{
 		if(token[j] < '0' || token[j] > '9')
 		{
-			dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}	
 		j++;
