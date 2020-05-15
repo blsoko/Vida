@@ -56,11 +56,11 @@ void containerBuffer(stack_t **head, unsigned int line)
 	}
 	if (flag == 0)
 	{
+		fprintf(stderr, "L%u: unknown instruction %s\n", line, token);
 		free(temp);
 		free(release.containerFile);
 		free_h(head);
 		fclose(release.openFile);
-		fprintf(stderr, "L%u: unknown instruction <opcode>\n", line);
 		exit(EXIT_FAILURE);
 	}
 	free(temp);
