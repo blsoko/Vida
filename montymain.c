@@ -44,12 +44,14 @@ int main(int ac, char *av[])
 	}
 	if (ac != 2)
 	{
+		free(release.containerFile);
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	release.openFile = fopen(av[1], "r");
 	if (release.openFile == NULL)
 	{
+		free(release.containerFile);
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
