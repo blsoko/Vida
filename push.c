@@ -50,7 +50,7 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	while (token[j] != '\0')
 	{
-		if (token[j] < '0' || token[j] > '9')
+		if ((token[j] < '0' || token[j] > '9') && token[j] != '-')
 		{
 			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
