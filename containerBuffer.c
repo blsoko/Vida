@@ -32,13 +32,13 @@ int _strcmp(char *s1, char *s2)
 void containerBuffer(stack_t **head, unsigned int line)
 {
 	char *token = strdup(release.containerFile), limit[] = " \t\n";
-	char *temp = token;
 	int j = 0, flag = 0;
 
 	instruction_t seg[] = {{"push", push}, {"pall", pall},
 	{"pint", pint}, {"pop", pop}, {"swap", swap}, {"add", add}, {"nop", nop},
 	{"sub", sub}, {"div", div1}, {"mul", mul}, {"mod", mod},
 	{"pchar", pchar}, {'\0', NULL}};
+	release.temp = token;
 	token = strtok(token, limit);
 	if (token == NULL)
 		return;
@@ -57,11 +57,11 @@ void containerBuffer(stack_t **head, unsigned int line)
 	if (flag == 0)
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line, token);
-		free(temp);
+		free(release.temp);
 		free(release.containerFile);
 		free_h(head);
 		fclose(release.openFile);
 		exit(EXIT_FAILURE);
 	}
-	free(temp);
+	free(release.temp);
 }

@@ -39,6 +39,7 @@ typedef struct frees
 {
 	char *containerFile;
 	FILE *openFile;
+	char *temp;
 } freet;
 extern freet release;
 void containerBuffer(stack_t **head, unsigned int line);

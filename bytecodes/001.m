@@ -1,13 +1,4 @@
-push 1
-push -2
-daw
+push dwa2
 
-wda       push
-  push
-wdadwa
-wdaw
-
-
-pall
 
 pall
