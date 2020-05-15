@@ -1,6 +1,12 @@
 #include "monty.h"
 
-char *containerFile;
+/**
+ * freeFile - release memory
+ *
+ * @head: stack
+ *
+ * Return: nothing
+*/
 void freeFile(stack_t *head)
 {
 	stack_t *vector;
@@ -13,12 +19,20 @@ void freeFile(stack_t *head)
 	}
 	free(head);
 }
+/**
+ * push - release memory
+ *
+ * @stack: stack
+ * @line_number: number of line
+ *
+ * Return: nothing
+*/
 void push(stack_t **stack, unsigned int line_number)
 {
 	char *token, limit[] = " \t\n";
 	int number, j = 0;
 	stack_t *new_node;
-	
+
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
@@ -34,13 +48,13 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	while(token[j] != '\0')
+	while (token[j] != '\0')
 	{
-		if(token[j] < '0' || token[j] > '9')
+		if (token[j] < '0' || token[j] > '9')
 		{
 			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
-		}	
+		}
 		j++;
 	}
 	number = atoi(token);

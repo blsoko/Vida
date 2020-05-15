@@ -1,6 +1,14 @@
 #include "monty.h"
 
 char *containerFile;
+
+/**
+ * free_h - release memory
+ *
+ * @head: list
+ *
+ * Return: nothing
+*/
 void free_h(stack_t **head)
 {
 	stack_t *vector;
@@ -14,6 +22,14 @@ void free_h(stack_t **head)
 	free((*(head)));
 }
 
+/**
+ * main - principal
+ *
+ * @ac: number of arguments
+ * @av: arguments
+ *
+ * Return: 0
+ */
 int main(int ac, char *av[])
 {
 	FILE *openFile;
@@ -23,7 +39,10 @@ int main(int ac, char *av[])
 
 	containerFile = malloc(containerSize * sizeof(char));
 	if (containerFile == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
+	}
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");

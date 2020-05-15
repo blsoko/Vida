@@ -1,5 +1,12 @@
 #include "monty.h"
-char *containerFile;
+/**
+ * _strcmp - release memory
+ *
+ * @s1: string1
+ * @s2: string2
+ *
+ * Return: diferrence string1 - string2
+*/
 int _strcmp(char *s1, char *s2)
 {
 	int i, rtn = 0;
@@ -14,16 +21,24 @@ int _strcmp(char *s1, char *s2)
 	}
 	return (rtn);
 }
-
+/**
+ * containerBuffer - release memory
+ *
+ * @head: stack
+ * @line: number of line
+ *
+ * Return: nothing
+*/
 void containerBuffer(stack_t **head, unsigned int line)
 {
 	char *token = strdup(containerFile), limit[] = " \t\n";
 	char *temp = token;
 	int j = 0, flag = 0;
-	
+
 	instruction_t seg[] = {{"push", push}, {"pall", pall},
-	{"pint", pint}, {'\0', NULL}};
-	token = strtok(temp, limit);
+	{"pint", pint}, {"pop", pop}, {"swap", swap}, {"add", add}, {"nop", nop},
+	{"sub", sub}, {"div", div1}, {"mul", mul}, {"mod", mod}, {'\0', NULL}};
+	token = strtok(token, limit);
 	if (token == NULL)
 		return;
 	else if (token[0] != '\0' && token[0] == '#')
@@ -38,7 +53,7 @@ void containerBuffer(stack_t **head, unsigned int line)
 		}
 		j++;
 	}
-	if(flag == 0)
+	if (flag == 0)
 	{
 		fprintf(stderr, "L%u: unknown instruction <opcode>\n", line);
 		exit(EXIT_FAILURE);
