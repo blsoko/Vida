@@ -37,7 +37,8 @@ void containerBuffer(stack_t **head, unsigned int line)
 
 	instruction_t seg[] = {{"push", push}, {"pall", pall},
 	{"pint", pint}, {"pop", pop}, {"swap", swap}, {"add", add}, {"nop", nop},
-	{"sub", sub}, {"div", div1}, {"mul", mul}, {"mod", mod}, {'\0', NULL}};
+	{"sub", sub}, {"div", div1}, {"mul", mul}, {"mod", mod},
+	{"pchar", pchar}, {'\0', NULL}};
 	token = strtok(token, limit);
 	if (token == NULL)
 		return;
