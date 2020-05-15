@@ -13,12 +13,20 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	if ((*(stack)) == NULL)
 	{
+		free(release.temp);
+		free(release.containerFile);
+		free_h(stack);
+		fclose(release.openFile);
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	x = (*(stack))->n;
 	if (x < 0 || x > 255)
 	{
+		free(release.temp);
+		free(release.containerFile);
+		free_h(stack);
+		fclose(release.openFile);
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}

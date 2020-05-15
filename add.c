@@ -13,12 +13,16 @@ void add(stack_t **stack, unsigned int line_number)
 	int x = 0;
 
 	vector = *stack;
-	(*(stack)) = (*(stack))->next;
-	if ((*(stack)) == NULL || vector == NULL)
+	if ((*(stack)) == NULL || vector == NULL || (*(stack))->next == NULL)
 	{
+		free(release.temp);
+		free(release.containerFile);
+		free_h(stack);
+		fclose(release.openFile);
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	(*(stack)) = (*(stack))->next;
 	x = vector->n;
 	(*(stack))->n = (*(stack))->n + x;
 	free(vector);
