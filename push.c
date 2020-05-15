@@ -39,7 +39,7 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(containerFile, limit);
+	token = strtok(release.containerFile, limit);
 	if (token == NULL)
 		return;
 	token = strtok(NULL, limit);
@@ -52,6 +52,7 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		if ((token[j] < '0' || token[j] > '9') && token[j] != '-')
 		{
+
 			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}

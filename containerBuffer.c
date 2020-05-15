@@ -31,7 +31,7 @@ int _strcmp(char *s1, char *s2)
 */
 void containerBuffer(stack_t **head, unsigned int line)
 {
-	char *token = strdup(containerFile), limit[] = " \t\n";
+	char *token = strdup(release.containerFile), limit[] = " \t\n";
 	char *temp = token;
 	int j = 0, flag = 0;
 
@@ -56,6 +56,10 @@ void containerBuffer(stack_t **head, unsigned int line)
 	}
 	if (flag == 0)
 	{
+		free(temp);
+		free(release.containerFile);
+		free_h(head);
+		fclose(release.openFile);
 		fprintf(stderr, "L%u: unknown instruction <opcode>\n", line);
 		exit(EXIT_FAILURE);
 	}

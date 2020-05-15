@@ -35,7 +35,12 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-extern char *containerFile;
+typedef struct frees
+{
+	char *containerFile;
+	FILE *openFile;
+} freet;
+extern freet release;
 void containerBuffer(stack_t **head, unsigned int line);
 int _strcmp(char *s1, char *s2);
 void push(stack_t **stack, unsigned int line_number);

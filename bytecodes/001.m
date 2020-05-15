@@ -1,3 +1,3 @@
-push 1
-push 49
-pchar
+kkwdad
+dwakldwa
+pall
