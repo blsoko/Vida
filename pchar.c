@@ -21,7 +21,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	x = (*(stack))->n;
-	if (x < 0 || x > 255)
+	if (x < 0 || x > 127)
 	{
 		free(release.temp);
 		free(release.containerFile);
