@@ -1,4 +1,7 @@
-push dwa2
+
+push -2
+
+push aa
 
 
 pall

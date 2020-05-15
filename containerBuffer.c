@@ -41,9 +41,15 @@ void containerBuffer(stack_t **head, unsigned int line)
 	release.temp = token;
 	token = strtok(token, limit);
 	if (token == NULL)
+	{
+		free(release.temp);
 		return;
+	}
 	else if (token[0] != '\0' && token[0] == '#')
+	{
+		free(release.temp);
 		return;
+	}
 	while (seg[j].opcode != '\0') /*structrure elements iterator*/
 	{
 		if (_strcmp(token, seg[j].opcode) == 0)
